@@ -58,28 +58,42 @@ This project is designed as a **portfolio-ready example** of enterprise identity
 ## 🛠️ Deployment & Configuration
 
 <p>
-  <img src="dc-setup.png" width="80%" alt="Domain Controller Setup"/>
+  <img src="1️⃣ Active Directory Installed.png" width="80%" alt="Domain Controller Setup"/>
 </p>
 <p>
-Deployed a Windows Server 2022 virtual machine in Azure and installed the Active Directory Domain Services role.
-</p>
-
-<br />
-
-<p>
-  <img src="domain-promotion.png" width="80%" alt="Domain Promotion"/>
-</p>
-<p>
-Promoted the server to a domain controller and created a new Active Directory domain.
+Installed Active Directory Domain Services on Windows Server 2022
 </p>
 
 <br />
 
 <p>
-  <img src="domain-join.png" width="80%" alt="Client Domain Join"/>
+  <img src="2️⃣ Domain Controller  Domain Created.png" width="80%" alt="Domain Promotion"/>
 </p>
 <p>
-Joined a Windows 11 client virtual machine to the domain and verified successful authentication.
+Promoted Windows Server to Domain Controller and Created New Forest
+</p>
+
+<br />
+
+<p>
+  <img src="3️⃣ Admin User & Organizational Units.png" width="80%" alt="Client Domain Join"/>
+</p>
+<p>
+Configured Organizational Units and Created Domain Admin User
+</p>
+
+<p>
+  <img src="4️⃣ Client Joined to Domain.png" width="80%" alt="Client Domain Join"/>
+</p>
+<p>
+Joined Windows 11 Client Machine to Active Directory Domain
+</p>
+
+<p>
+  <img src="5️⃣ Bulk Users Created.png" width="80%" alt="Client Domain Join"/>
+</p>
+<p>
+Validated User Authentication and Directory Services Functionality
 </p>
 
 ---
