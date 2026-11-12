@@ -1,25 +1,3 @@
-<p align="center">
-  <img src="https://i.imgur.com/pU5A58S.png" alt="Microsoft Active Directory Logo"/>
-</p>
-
-<h1 align="center">Active Directory Deployment in Azure</h1>
-<h2 align="center">On-Premises AD DS Configured Within Cloud-Based Virtual Machines</h2>
-
-<h3 align="center">
-Microsoft Azure | Windows Server | Active Directory | PowerShell
-</h3>
-
-<div align="center">
-  
-  ![Azure](https://img.shields.io/badge/Microsoft_Azure-0089D6?style=for-the-badge&logo=microsoft-azure&logoColor=white)
-  ![Windows Server](https://img.shields.io/badge/Windows_Server-0078D6?style=for-the-badge&logo=windows&logoColor=white)
-  ![Active Directory](https://img.shields.io/badge/Active_Directory-003366?style=for-the-badge)
-  ![PowerShell](https://img.shields.io/badge/PowerShell-5391FE?style=for-the-badge&logo=powershell&logoColor=white)
-
-</div>
-
----
-
 ## 📋 Project Overview
 
 **Project Type:** Infrastructure Deployment & Identity Management  
@@ -28,7 +6,7 @@ Microsoft Azure | Windows Server | Active Directory | PowerShell
 
 I built this lab to practice the exact identity management tasks I would perform as an IAM Analyst or Help Desk technician. It demonstrates the deployment of a traditional **on-premises Active Directory Domain Services (AD DS)** environment hosted entirely within **Microsoft Azure Virtual Machines**, simulating a real-world enterprise identity infrastructure using cloud-based compute resources.
 
-The implementation includes provisioning Azure VMs, promoting a Windows Server to a domain controller, configuring domain services, and validating authentication and domain join functionality for client machines.
+The implementation includes provisioning Azure VMs, promoting a Windows Server to a domain controller, configuring domain services, validating authentication for client machines, and performing advanced administrative tasks such as PowerShell automation and Group Policy enforcement.
 
 ---
 
@@ -38,6 +16,7 @@ The implementation includes provisioning Azure VMs, promoting a Windows Server t
 - Windows Server 2022 (Domain Controller)
 - Windows 11 (Domain-Joined Client)
 - Active Directory Domain Services (AD DS)
+- Group Policy Management
 - Remote Desktop Protocol (RDP)
 - PowerShell (Administration & Automation)
 
@@ -49,7 +28,10 @@ The implementation includes provisioning Azure VMs, promoting a Windows Server t
 2. Installed and configured Active Directory Domain Services  
 3. Promoted Windows Server to a domain controller  
 4. Joined client machine to the domain  
-5. Validated authentication, directory services, and policy application  
+5. Automated user provisioning using PowerShell  
+6. Performed Help Desk administration (password resets, account unlocks)  
+7. Enforced security policies using Group Policy Objects (GPOs)  
+8. Validated authentication, directory services, and policy application  
 
 ---
 
