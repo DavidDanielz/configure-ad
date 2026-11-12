@@ -210,8 +210,10 @@ foreach ($user in $users) {
     -SamAccountName $user.Username `
     -Path "OU=_HR,DC=david,DC=local" `
     -AccountPassword (ConvertTo-SecureString "Password123!" -AsPlainText -Force) `
-    -Enabled $true
-}
+    -Enabled $true}
+
+
+
 <img src="images/step-06/step-06-powershell-script.png" alt="PowerShell Script Execution" width="80%">
 (Add screenshot of PowerShell ISE with the script)
 
