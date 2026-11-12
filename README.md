@@ -210,5 +210,4 @@ foreach ($user in $users) {
     -SamAccountName $user.Username `
     -Path "OU=_HR,DC=david,DC=local" `
     -AccountPassword (ConvertTo-SecureString "Password123!" -AsPlainText -Force) `
-    -Enabled $true
-}
+    -Enabled $true}
