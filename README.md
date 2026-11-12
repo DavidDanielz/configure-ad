@@ -210,15 +210,15 @@ foreach ($user in $users) {
     -SamAccountName $user.Username `
     -Path "OU=_HR,DC=david,DC=local" `
     -AccountPassword (ConvertTo-SecureString "Password123!" -AsPlainText -Force) `
-    -Enabled $true}'''
-
-https://images/step-06/step-06-powershell-script.png
+    -Enabled $true
+}
+<img src="images/step-06/step-06-powershell-script.png" alt="PowerShell Script Execution" width="80%">
 (Add screenshot of PowerShell ISE with the script)
 
-https://images/step-06/step-06-powershell-run.png
+<img src="images/step-06/step-06-powershell-run.png" alt="PowerShell Script Running Successfully" width="80%">
 (Add screenshot of the console running the script without errors)
 
-https://images/step-06/step-06-bulk-users.png
+<img src="images/step-06/step-06-bulk-users.png" alt="Bulk Users Created in ADUC" width="80%">
 (Add screenshot of Active Directory showing the new users)
 
 Result: Multiple users were provisioned efficiently using automation, demonstrating an understanding of script-based identity management.
