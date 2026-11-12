@@ -210,7 +210,7 @@ foreach ($user in $users) {
     -SamAccountName $user.Username `
     -Path "OU=_HR,DC=david,DC=local" `
     -AccountPassword (ConvertTo-SecureString "Password123!" -AsPlainText -Force) `
-    -Enabled $true}
+    -Enabled $true}'''
 
 https://images/step-06/step-06-powershell-script.png
 (Add screenshot of PowerShell ISE with the script)
