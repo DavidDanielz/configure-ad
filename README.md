@@ -231,3 +231,12 @@ foreach ($user in $users) {
     -AccountPassword (ConvertTo-SecureString "Password123!" -AsPlainText -Force) `
     -Enabled $true
 }
+4. Open Active Directory Users and Computers and navigate to the _HR OU to verify the users were created successfully.
+
+https://images/step-06/step-06-powershell.png
+(Add screenshot of the PowerShell ISE with the script)
+
+https://images/step-06/step-06-bulk-users.png
+(Add screenshot of ADUC showing the new users)
+
+Result: Multiple users were provisioned efficiently using automation.
