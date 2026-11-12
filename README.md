@@ -211,3 +211,14 @@ foreach ($user in $users) {
     -Path "OU=_HR,DC=david,DC=local" `
     -AccountPassword (ConvertTo-SecureString "Password123!" -AsPlainText -Force) `
     -Enabled $true}
+
+https://images/step-06/step-06-powershell-script.png
+(Add screenshot of PowerShell ISE with the script)
+
+https://images/step-06/step-06-powershell-run.png
+(Add screenshot of the console running the script without errors)
+
+https://images/step-06/step-06-bulk-users.png
+(Add screenshot of Active Directory showing the new users)
+
+Result: Multiple users were provisioned efficiently using automation, demonstrating an understanding of script-based identity management.
