@@ -188,18 +188,21 @@ This project is designed as a **portfolio-ready example** of enterprise identity
 
 ### Step 6: Create Bulk Users via PowerShell
 
-**Goal:** Automate user creation to simulate real-world onboarding.
+**Goal:** Automate user creation to simulate real-world onboarding and save time.
 
 **Procedure:**
 
 1. On the Domain Controller, open **PowerShell ISE** as Administrator.
-2. Create a CSV file with mock employee names and usernames.
-3. Run the PowerShell script (shown below) to import the CSV and create the users in the `_HR` OU.
+2. Create a CSV file with mock employee names and usernames (e.g., `users.csv`).
+3. Write a PowerShell script to import the CSV and create the users in the `_HR` OU.
+4. Run the script.
+5. Open **Active Directory Users and Computers** and navigate to the `_HR` OU to verify the users were created successfully.
 
 ```powershell
-# Example PowerShell script to create bulk users
+# PowerShell script to create bulk users
 Import-Module ActiveDirectory
 $users = Import-Csv -Path "C:\Users\Administrator\Desktop\users.csv"
+
 foreach ($user in $users) {
     New-ADUser -Name "$($user.FirstName) $($user.LastName)" `
     -GivenName $user.FirstName `
@@ -209,13 +212,13 @@ foreach ($user in $users) {
     -AccountPassword (ConvertTo-SecureString "Password123!" -AsPlainText -Force) `
     -Enabled $true
 }
+https://images/step-06/step-06-powershell-script.png
+(Add screenshot of PowerShell ISE with the script)
 
-4. Open Active Directory Users and Computers and navigate to the _HR OU to verify the users were created successfully.
-
-https://images/step-06/step-06-powershell.png
-(Add screenshot of the PowerShell ISE with the script)
+https://images/step-06/step-06-powershell-run.png
+(Add screenshot of the console running the script without errors)
 
 https://images/step-06/step-06-bulk-users.png
-(Add screenshot of ADUC showing the new users)
+(Add screenshot of Active Directory showing the new users)
 
-Result: Multiple users were provisioned efficiently using automation.
+Result: Multiple users were provisioned efficiently using automation, demonstrating an understanding of script-based identity management.
