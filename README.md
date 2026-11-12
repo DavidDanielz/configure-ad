@@ -198,7 +198,7 @@ This project is designed as a **portfolio-ready example** of enterprise identity
 4. Run the script.
 5. Open **Active Directory Users and Computers** and navigate to the `_HR` OU to verify the users were created successfully.
 
-```powershell
+<pre><code>
 # PowerShell script to create bulk users
 Import-Module ActiveDirectory
 $users = Import-Csv -Path "C:\Users\Administrator\Desktop\users.csv"
@@ -211,16 +211,19 @@ foreach ($user in $users) {
     -Path "OU=_HR,DC=david,DC=local" `
     -AccountPassword (ConvertTo-SecureString "Password123!" -AsPlainText -Force) `
     -Enabled $true}
-
-
+  
+</code></pre>
 
 <img src="images/step-06/step-06-powershell-script.png" alt="PowerShell Script Execution" width="80%">
-(Add screenshot of PowerShell ISE with the script)
+
+*(Add screenshot of PowerShell ISE with the script)*
 
 <img src="images/step-06/step-06-powershell-run.png" alt="PowerShell Script Running Successfully" width="80%">
-(Add screenshot of the console running the script without errors)
+
+*(Add screenshot of the console running the script without errors)*
 
 <img src="images/step-06/step-06-bulk-users.png" alt="Bulk Users Created in ADUC" width="80%">
-(Add screenshot of Active Directory showing the new users)
 
-Result: Multiple users were provisioned efficiently using automation, demonstrating an understanding of script-based identity management.
+*(Add screenshot of Active Directory showing the new users)*
+
+**Result:** Multiple users were provisioned efficiently using automation, demonstrating an understanding of script-based identity management.
