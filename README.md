@@ -2,11 +2,11 @@
   <img src="https://i.imgur.com/pU5A58S.png" alt="Microsoft Active Directory Logo"/>
 </p>
 
-<h1 align="center">Active Directory Deployment in Azure</h1>
-<h2 align="center">On-Premises AD DS Configured Within Cloud-Based Virtual Machines</h2>
+<h1 align="center">Active Directory Deployment & Administration in Azure</h1>
+<h2 align="center">Provisioning, Identity Management, and Group Policy Enforcement</h2>
 
 <h3 align="center">
-Microsoft Azure | Windows Server | Active Directory | PowerShell
+Microsoft Azure | Windows Server | Active Directory | PowerShell | Group Policy
 </h3>
 
 <div align="center">
