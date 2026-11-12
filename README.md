@@ -196,6 +196,10 @@ The implementation includes provisioning Azure VMs, promoting a Windows Server t
 
 *(Screenshot of the "Welcome to the domain" popup)*
 
+<img src="images/step-07/step-07-domain-login.png" alt="Client Domain Login" width="80%">
+
+*(Screenshot of the Windows 11 login screen showing the domain user name, e.g., DAVID\David-Admin)*
+
 **Result:** The client machine is now a member of the Active Directory domain and can authenticate using domain credentials.
 
 ---
@@ -255,7 +259,7 @@ foreach ($user in $users) {
 3. Right-click on one of the bulk users you created (e.g., John Doe) and select **Reset Password**.
 4. Enter a new temporary password, check the box for **"User must change password at next logon"**, and click **OK**.
 
-<img src="images/step-07/step-07-reset-password.png" alt="Resetting User Password" width="80%">
+<img src="images/step-07/step-07-reset-password.png" alt="Reset Password Dialog" width="80%">
 
 *(Screenshot of the Reset Password dialog box)*
 
@@ -278,12 +282,11 @@ foreach ($user in $users) {
 **Procedure:**
 
 1. On the Domain Controller, open **Group Policy Management** from the Server Manager Tools menu.
-2. Expand your domain, right-click **Default Domain Policy** (or create a new GPO), and select **Edit**.
+2. Right-click the `_HR` Organizational Unit and select **Create a GPO in this domain, and Link it here...**. Name it "HR Control Panel Restriction", then right-click it and select **Edit**.
 3. Navigate to **User Configuration** → **Policies** → **Administrative Templates** → **Control Panel**.
 4. Double-click the policy named **"Prohibit access to Control Panel and PC settings"**.
 5. Select **Enabled**, click **Apply**, and then **OK**.
 6. Close the Group Policy Management Editor.
-7. Link the GPO to the `_HR` Organizational Unit (drag and drop, or right-click the OU and select "Link an Existing GPO").
 
 <img src="images/step-08/step-08-gpo-editor.png" alt="Editing GPO" width="80%">
 
@@ -293,8 +296,8 @@ foreach ($user in $users) {
 
 *(Screenshot of the GPO linked to the _HR OU)*
 
-8. On the Client VM, open Command Prompt as Administrator and run `gpupdate /force` to apply the policy.
-9. Log in as an `_HR` user, and try to open the Control Panel. You should see a restriction message.
+7. On the Client VM, open Command Prompt as Administrator and run `gpupdate /force` to apply the policy.
+8. Log in as an `_HR` user, and try to open the Control Panel. You should see a restriction message.
 
 <img src="images/step-08/step-08-gpo-verified.png" alt="GPO Policy Verified" width="80%">
 
@@ -313,10 +316,6 @@ To ensure the environment is fully operational and secure, the following validat
 - Validated the directory structure and domain trust.
 - Ensured stable communication between the domain controller and client systems.
 - Tested Help Desk scenarios (password resets, account lockouts) and verified Group Policy enforcement on the client VM.
-
-<img src="images/step-07/step-07-domain-login.png" alt="Client Domain Login" width="80%">
-
-*(Screenshot of the Windows 11 login screen showing the domain user name, e.g., DAVID\David-Admin)*
 
 ---
 
