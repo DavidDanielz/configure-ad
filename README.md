@@ -65,11 +65,11 @@ The implementation includes provisioning Azure VMs, promoting a Windows Server t
 
 **Procedure:**
 
-1. Sign in to the Azure Portal and create a new Resource Group named `AD-Lab-RG`.
+1. Sign in to the Azure Portal and create a new Resource Group named `Active-Directory-Lab`.
 2. Create the first VM (Domain Controller):
    - **Image:** Windows Server 2022
    - **Size:** Standard_B2s (or similar)
-   - **Networking:** Place in a new Virtual Network (VNet) named `AD-VNet`.
+   - **Networking:** Place in a new Virtual Network (VNet) named `Active-Directory-VNet`.
 3. Create the second VM (Client):
    - **Image:** Windows 11 Pro
    - **Networking:** Place in the **same** `AD-VNet` and Subnet as the DC.
