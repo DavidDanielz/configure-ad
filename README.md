@@ -67,7 +67,8 @@ The implementation includes provisioning Azure VMs, promoting a Windows Server t
 
 <img src="Images/Step 1/01-create-rg.png.png" width="80%" alt="Creating Resource Group">
 <br>
-**Outcome:**
+
+**Outcome of the image:**
 *Creating a new Resource Group named Active-Directory-Lab to hold all the resources for this project.*
 
 ---
