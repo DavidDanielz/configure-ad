@@ -26,7 +26,7 @@ Microsoft Azure | Windows Server | Active Directory | PowerShell | Group Policy
 **Status:** Complete and Fully Operational  
 **Business Use Case:** Centralized identity, authentication, and access management in a cloud hosted environment  
 
-I built this lab to practice the exact identity management tasks I would perform as an IAM Analyst or Help Desk technician. It demonstrates the deployment of a traditional on premises Active Directory Domain Services (AD DS) environment hosted entirely within Microsoft Azure Virtual Machines, simulating a real world enterprise identity infrastructure using cloud based compute resources.
+I built this lab to practice the core Help Desk and Identity Management tasks I will perform daily, such as user provisioning, password resets, and account lockouts. It also demonstrates the foundational infrastructure and security skills required for an IAM Analyst role. The project showcases the deployment of a traditional on premises Active Directory Domain Services (AD DS) environment hosted entirely within Microsoft Azure Virtual Machines, simulating a real world enterprise identity infrastructure.
 
 The implementation includes provisioning Azure VMs, promoting a Windows Server to a domain controller, configuring domain services, validating authentication for client machines, and performing advanced administrative tasks such as PowerShell automation and Group Policy enforcement.
 
@@ -889,7 +889,7 @@ The implementation includes provisioning Azure VMs, promoting a Windows Server t
 
 ## 🔐 Validation & Testing
 
-To ensure the environment is fully operational and secure, the following validation steps were performed:
+To ensure the environment is fully operational and secure, I performed the following validation steps:
 
 - Verified domain controller health and DNS functionality.
 - Confirmed successful user authentication by logging into the Client VM using a domain user account.
@@ -901,15 +901,16 @@ To ensure the environment is fully operational and secure, the following validat
 
 ## 🧠 Skills Demonstrated
 
-- **Cloud Infrastructure:** Azure Virtual Machine provisioning, networking, and DNS configuration.
-- **Windows Server Administration:** Active Directory Domain Services (AD DS) installation and promotion.
-- **Identity & Access Management (IAM):** Creating Organizational Units (OUs), managing user accounts, configuring Role Based Access Control (RBAC), and performing password resets/unlocks.
+- **Help Desk Administration:** Managing user accounts, performing password resets, unlocking accounts, and documenting step by step resolutions.
+- **Troubleshooting & Auditing:** Using Event Viewer (Event ID 4625) to audit security logs, verify authentication, and diagnose account lockouts.
+- **Identity & Access Management (IAM):** Creating Organizational Units (OUs), managing user lifecycles, configuring Role Based Access Control (RBAC), and enforcing security policies.
 - **Group Policy Management:** Creating, linking, and enforcing GPOs to secure user environments.
 - **Automation:** Using PowerShell to automate bulk user creation.
-- **Troubleshooting:** Validating domain connectivity, authentication, and DNS resolution.
+- **Windows Server Administration:** Active Directory Domain Services (AD DS) installation and promotion.
+- **Cloud Infrastructure:** Azure Virtual Machine provisioning, networking, and DNS configuration.
 
 ---
 
 ## ✅ Outcome
 
-A fully functional Active Directory environment was successfully deployed within Microsoft Azure, simulating a real world on premises identity infrastructure in a cloud hosted setting. This project demonstrates my practical experience with enterprise authentication systems, Windows Server administration, identity management, and cloud based infrastructure management.
+A fully functional Active Directory environment was successfully deployed within Microsoft Azure, simulating a real world on premises identity infrastructure in a cloud hosted setting. This project demonstrates my practical experience with enterprise authentication systems, Windows Server administration, Help Desk account management, identity and access management (IAM), and cloud based infrastructure.
