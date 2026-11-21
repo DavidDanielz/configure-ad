@@ -44,7 +44,7 @@ The implementation includes provisioning Azure VMs, promoting a Windows Server t
 
 ---
 
-## ⚙️ High Level Deployment Steps
+## ⚙️ Project Deployment Steps
 
 1. Provisioned Azure virtual machines for domain controller and client systems  
 2. Installed and configured Active Directory Domain Services  
