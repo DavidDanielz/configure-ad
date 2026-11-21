@@ -1,3 +1,77 @@
+### 1️⃣ Step 1: Provision Azure Virtual Machines
+
+**Goal:** Create the Domain Controller (DC) and Client VMs in Azure, ensuring they are on the same network so they can communicate.
+
+**Procedure:**
+
+<img src="images/step-1/01-create-rg.png" width="80%" alt="Creating Resource Group">
+<br>
+**Outcome of the image:** *Created a new Resource Group named Active-Directory-Lab to hold all the resources for this project.*
+
+<img src="images/step-1/02-create-vnet.png" width="80%" alt="Creating Virtual Network">
+<br>
+**Outcome of the image:** *Provisioned a Virtual Network (VNet) to allow the Domain Controller and Client machines to communicate securely.*
+
+<img src="images/step-1/03-dc1-basics.png" width="80%" alt="DC-1 Basics Tab">
+<br>
+**Outcome of the image:** *Configured the Basics tab for the Domain Controller VM (DC-1) using Windows Server.*
+
+<img src="images/step-1/04-dc1-size-admin.png" width="80%" alt="DC-1 Size and Admin">
+<br>
+**Outcome of the image:** *Selected the VM size, set administrator credentials, and allowed inbound RDP traffic for remote access.*
+
+<img src="images/step-1/05-dc1-networking.png" width="80%" alt="DC-1 Networking">
+<br>
+**Outcome of the image:** *Placed DC-1 into the Virtual Network and assigned it a public IP for RDP access.*
+
+<img src="images/step-1/06-client1-basics.png" width="80%" alt="Client-1 Basics Tab">
+<br>
+**Outcome of the image:** *Configured the Basics tab for the Client VM (Client-1).*
+
+<img src="images/step-1/07-client1-size-admin.png" width="80%" alt="Client-1 Size and Admin">
+<br>
+**Outcome of the image:** *Set up the administrator credentials and network rules for Client-1.*
+
+<img src="images/step-1/08-client1-networking.png" width="80%" alt="Client-1 Networking">
+<br>
+**Outcome of the image:** *Placed Client-1 in the same VNet as the Domain Controller so they can communicate.*
+
+<img src="images/step-1/09-vms-deployed.png" width="80%" alt="Both VMs Running">
+<br>
+**Outcome of the image:** *Confirmed both VMs (DC-1 and Client-1) are successfully deployed and in a Running state.*
+
+<img src="images/step-1/10-dc1-static-ip.png" width="80%" alt="DC-1 Static IP Configuration">
+<br>
+**Outcome of the image:** *Changed DC-1's private IP assignment to Static (10.0.0.4) so DNS can function properly.*
+
+<img src="images/step-1/11-client1-custom-dns.png" width="80%" alt="Client-1 Custom DNS">
+<br>
+**Outcome of the image:** *Changed Client-1's DNS settings to "Custom" and pointed it directly to DC-1's IP address.*
+
+<img src="images/step-1/12-client1-ping-test.png" width="80%" alt="Pinging DC-1">
+<br>
+**Outcome of the image:** *Verified network connectivity by successfully pinging DC-1's private IP address from Client-1.*
+
+<img src="images/step-1/13-client1-ipconfig.png" width="80%" alt="Client-1 ipconfig">
+<br>
+**Outcome of the image:** *Ran ipconfig /all on Client-1 to confirm the DNS server is successfully pointing to DC-1.*
+
+<img src="images/step-1/14-dc1-ipconfig.png" width="80%" alt="DC-1 ipconfig">
+<br>
+**Outcome of the image:** *Ran ipconfig /all on DC-1 to confirm its static IP and self-referencing DNS settings.*
+
+**Result:** Both VMs are deployed and networked correctly, ready for AD DS installation.
+
+
+
+
+
+
+
+
+
+
+
 <p align="center">
   <img src="https://i.imgur.com/pU5A58S.png" alt="Microsoft Active Directory Logo"/>
 </p>
