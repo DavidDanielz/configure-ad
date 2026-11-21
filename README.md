@@ -48,8 +48,8 @@ The implementation includes provisioning Azure VMs, promoting a Windows Server t
 
 1. Provisioned Azure virtual machines for domain controller and client systems  
 2. Installed and configured Active Directory Domain Services  
-3. Promoted Windows Server to a domain controller  
-4. Joined client machine to the domain  
+3. Promoted the Windows Server to a domain controller  
+4. Joined the client machine to the domain  
 5. Automated user provisioning using PowerShell  
 6. Performed Help Desk administration (password resets, account unlocks)  
 7. Enforced security policies using Group Policy Objects (GPOs)  
