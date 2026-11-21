@@ -2,11 +2,11 @@
 
 ## 📋 Project Overview
 
-**Business Use Case:** Centralized identity, authentication, and access management in a cloud-hosted environment.
+**Business Use Case:** Centralized identity, authentication, and access management in a cloud hosted environment.
 
-I built this lab to practice the exact identity management tasks I would perform as an IAM Analyst or Help Desk Technician. It demonstrates the deployment of a traditional on-premises Active Directory Domain Services (AD DS) environment hosted entirely within Microsoft Azure Virtual Machines. 
+I built this lab to practice the exact identity management tasks I would perform as an IAM Analyst or Help Desk Technician. It demonstrates the deployment of a traditional on premises Active Directory Domain Services (AD DS) environment hosted entirely within Microsoft Azure Virtual Machines. 
 
-Instead of just showing the final result, this guide walks through the actual step-by-step process—including the specific Azure configurations, the PowerShell automation, and the troubleshooting involved in managing user accounts and Group Policies.
+Instead of just showing the final result, this guide walks through the actual step by step process including the specific Azure configurations, the PowerShell automation, and the troubleshooting involved in managing user accounts and Group Policies.
 
 **Environments & Technologies Used:**
 *   **Cloud:** Microsoft Azure (Virtual Machines, Networking, VNet)
@@ -17,13 +17,13 @@ Instead of just showing the final result, this guide walks through the actual st
 
 ---
 
-## 🛠️ Step-by-Step Deployment Guide
+## 🛠️ Step by Step Deployment Guide
 
 ### Step 1: Provisioning Azure Infrastructure
 
-**Goal:** Create the Resource Group, Virtual Network, and the two Virtual Machines (DC-1 and Client-1), ensuring they are networked correctly.
+**Goal:** Create the Resource Group, Virtual Network, and the two Virtual Machines (DC-1 and Client-1) ensuring they are networked correctly.
 
-First, I created a resource group to hold all the lab resources, followed by a Virtual Network (VNet) to allow the machines to communicate.
+First, I created a resource group to hold all the lab resources followed by a Virtual Network (VNet) to allow the machines to communicate.
 <br>
 <img src="images/step-1/01-create-rg.png" width="80%" alt="Creating Resource Group">
 <br>
@@ -37,7 +37,7 @@ Next, I configured the Domain Controller VM (DC-1) using Windows Server. I allow
 <br>
 <img src="images/step-1/05-dc1-networking.png" width="80%" alt="DC-1 Networking">
 
-I repeated the process for the Client VM (Client-1), placing it in the same VNet so it could communicate with the Domain Controller.
+I repeated the process for the Client VM (Client-1) placing it in the same VNet so it could communicate with the Domain Controller.
 <br>
 <img src="images/step-1/06-client1-basics.png" width="80%" alt="Client-1 Basics Tab">
 <br>
@@ -45,7 +45,7 @@ I repeated the process for the Client VM (Client-1), placing it in the same VNet
 <br>
 <img src="images/step-1/08-client1-networking.png" width="80%" alt="Client-1 Networking">
 
-Once both VMs were deployed and running, I configured the networking settings. For a Domain Controller to function properly, it must have a static IP address. I assigned DC-1 the static IP `10.0.0.4`.
+Once both VMs were deployed and running, I configured the networking settings. For a Domain Controller to function properly it must have a static IP address. I assigned DC-1 the static IP `10.0.0.4`.
 <br>
 <img src="images/step-1/09-vms-deployed.png" width="80%" alt="Both VMs Running">
 <br>
@@ -65,13 +65,13 @@ Finally, I configured Client-1's DNS settings. I changed the DNS from "Inherit" 
 
 ### Step 2: Installing Active Directory & Promoting the Domain Controller
 
-**Goal:** Install the AD DS role on DC-1 and promote it to a Domain Controller, creating a new forest (`mydomain.com`).
+**Goal:** Install the AD DS role on DC-1 and promote it to a Domain Controller creating a new forest (`mydomain.com`).
 
-I logged into DC-1, opened Server Manager, and installed the Active Directory Domain Services role. Once the installation succeeded, I launched the configuration wizard to promote the server.
+I logged into DC-1, opened Server Manager, and installed the Active Directory Domain Services role. Once the installation succeeded I launched the configuration wizard to promote the server.
 <br>
 <img src="images/step-2/01-adds-install-success.png" width="80%" alt="AD DS Installation Success">
 
-During the promotion, I selected "Add a new forest" and defined the root domain name as `mydomain.com`. After the server restarted, I logged back in using the domain administrator format (`mydomain\userlab`), confirming the domain was active.
+During the promotion I selected "Add a new forest" and defined the root domain name as `mydomain.com`. After the server restarted I logged back in using the domain administrator format (`mydomain\userlab`) confirming the domain was active.
 <br>
 <img src="images/step-2/02-new-forest.png" width="80%" alt="Adding a New Forest">
 <br>
@@ -85,17 +85,17 @@ During the promotion, I selected "Add a new forest" and defined the root domain 
 
 **Goal:** Create a structured directory (OUs) and a dedicated Domain Admin account (`jane_admin`).
 
-Using Active Directory Users and Computers (ADUC), I created two Organizational Units: `_EMPLOYEES` and `_ADMINS` to keep the directory organized.
+Using Active Directory Users and Computers (ADUC) I created two Organizational Units: `_EMPLOYEES` and `_ADMINS` to keep the directory organized.
 <br>
 <img src="images/step-3/01-create-ous.png" width="80%" alt="Creating OUs">
 
-Next, I created a new user, Jane Doe, inside the `_ADMINS` OU. I then opened her properties and added her to the **Domain Admins** security group.
+Next, I created a new user Jane Doe inside the `_ADMINS` OU. I then opened her properties and added her to the **Domain Admins** security group.
 <br>
 <img src="images/step-3/02-create-jane-doe.png" width="80%" alt="Creating Jane Doe">
 <br>
 <img src="images/step-3/03-jane-domain-admins.png" width="80%" alt="Adding Jane to Domain Admins">
 
-To keep things organized, I also created a `_CLIENTS` OU and moved the Client-1 computer object into it. Finally, I logged out and logged back in using `mydomain\jane_admin` to establish my daily admin account.
+To keep things organized I also created a `_CLIENTS` OU and moved the Client-1 computer object into it. Finally I logged out and logged back in using `mydomain\jane_admin` to establish my daily admin account.
 <br>
 <img src="images/step-3/04-jane-admin-login.png" width="80%" alt="Logging in as Jane Admin">
 <br>
@@ -105,13 +105,13 @@ To keep things organized, I also created a `_CLIENTS` OU and moved the Client-1 
 
 ### Step 4: Automating User Creation with PowerShell
 
-**Goal:** Use PowerShell ISE to bulk-create 1,000 users in the `_EMPLOYEES` OU.
+**Goal:** Use PowerShell ISE to bulk create 1,000 users in the `_EMPLOYEES` OU.
 
-To simulate a real-world onboarding process, I opened PowerShell ISE on DC-1 as an administrator and wrote a script to generate random names and create users in the `_EMPLOYEES` OU.
+To simulate a real world onboarding process I opened PowerShell ISE on DC-1 as an administrator and wrote a script to generate random names and create users in the `_EMPLOYEES` OU.
 <br>
 <img src="images/step-4/01-powershell-script.png" width="80%" alt="PowerShell Script">
 
-I ran the script and watched the console output as the accounts were created. Afterward, I opened ADUC and confirmed that the `_EMPLOYEES` OU was populated with the new accounts.
+I ran the script and watched the console output as the accounts were created. Afterward I opened ADUC and confirmed that the `_EMPLOYEES` OU was populated with the new accounts.
 <br>
 <img src="images/step-4/02-powershell-running.png" width="80%" alt="Running the Script">
 <br>
@@ -123,11 +123,11 @@ I ran the script and watched the console output as the accounts were created. Af
 
 **Goal:** Allow standard domain users to log into Client-1 via RDP.
 
-By default, only admins can RDP into a machine. I logged into Client-1 as `jane_admin`, opened System Properties, and added the **Domain Users** group to the Remote Desktop Users list.
+By default only admins can RDP into a machine. I logged into Client-1 as `jane_admin` opened System Properties and added the **Domain Users** group to the Remote Desktop Users list.
 <br>
 <img src="images/step-5/01-rdp-domain-users.png" width="80%" alt="Adding Domain Users to RDP">
 
-I then logged into Client-1 as `jane_admin` to verify, and subsequently attempted to log in with one of the newly generated standard users (`babe.tow`). After bypassing the standard self-signed certificate warning, I successfully logged in. I used the `whoami` command to prove the active session was indeed the standard user.
+I then logged into Client-1 as `jane_admin` to verify and subsequently attempted to log in with one of the newly generated standard users (`babe.tow`). After bypassing the standard self signed certificate warning I successfully logged in. I used the `whoami` command to prove the active session was indeed the standard user.
 <br>
 <img src="images/step-5/02-login-client1-jane.png" width="80%" alt="Logging in as Jane Admin">
 <br>
@@ -143,19 +143,19 @@ I then logged into Client-1 as `jane_admin` to verify, and subsequently attempte
 
 ### Step 6: Group Policy & Account Lockout
 
-**Goal:** Implement a Group Policy to lock accounts after 5 failed login attempts, then test it.
+**Goal:** Implement a Group Policy to lock accounts after 5 failed login attempts then test it.
 
 I opened Group Policy Management on DC-1 and edited the Default Domain Policy. I configured the Account Lockout Policy to lock accounts after 5 invalid attempts for a duration of 30 minutes.
 <br>
 <img src="images/step-6/01-lockout-policy.png" width="80%" alt="Configuring Lockout Policy">
 
-To test this, I went to Client-1 and intentionally entered a bad password for `babe.tow` until the system triggered the lockout error.
+To test this I went to Client-1 and intentionally entered a bad password for `babe.tow` until the system triggered the lockout error.
 <br>
 <img src="images/step-6/02-failed-login-attempt.png" width="80%" alt="Failed Login Attempt">
 <br>
 <img src="images/step-6/03-account-locked-error.png" width="80%" alt="Account Locked Error">
 
-As a Help Desk task, I went back to DC-1, found the locked account in ADUC, and checked the "Unlock account" box. I also performed a password reset.
+As a Help Desk task I went back to DC-1 found the locked account in ADUC and checked the "Unlock account" box. I also performed a password reset.
 <br>
 <img src="images/step-6/04-unlock-account.png" width="80%" alt="Unlocking the Account">
 <br>
@@ -175,7 +175,7 @@ I disabled the `babe.tow` account in ADUC. Attempting to log into Client-1 resul
 <br>
 <img src="images/step-7/02-disabled-login-error.png" width="80%" alt="Disabled Login Error">
 
-I re-enabled the account and verified that login was restored. I also captured a UAC prompt showing a standard user (`babe.tow`) needing to provide admin credentials (`jane_admin`) to authorize a system change, demonstrating the principle of least privilege.
+I re enabled the account and verified that login was restored. I also captured a UAC prompt showing a standard user (`babe.tow`) needing to provide admin credentials (`jane_admin`) to authorize a system change demonstrating the principle of least privilege.
 <br>
 <img src="images/step-7/03-enable-account.png" width="80%" alt="Enabling Account">
 <br>
@@ -185,7 +185,7 @@ I re-enabled the account and verified that login was restored. I also captured a
 <br>
 <img src="images/step-7/06-uac-privilege-escalation.png" width="80%" alt="UAC Prompt">
 
-Finally, I opened Event Viewer on Client-1 and reviewed the Security logs. I found Event ID 4625, which explicitly showed the account lockout and the bad password attempts, confirming the Group Policy was working at the system level.
+Finally I opened Event Viewer on Client-1 and reviewed the Security logs. I found Event ID 4625 which explicitly showed the account lockout and the bad password attempts confirming the Group Policy was working at the system level.
 <br>
 <img src="images/step-7/07-event-4625-lockout.png" width="80%" alt="Event 4625 Lockout">
 <br>
