@@ -131,19 +131,19 @@ The implementation includes provisioning Azure VMs, promoting a Windows Server t
 
 **Procedure:**
 
-<img src="images/step-2/01-adds-install-success.png" width="80%" alt="AD DS Installation Success">
+<img src="Images/Step 2/01-adds-install-success.png.png"80%" alt="AD DS Installation Success">
 <br>
 *Successfully installing the Active Directory Domain Services role via Server Manager.*
 
-<img src="images/step-2/02-new-forest.png" width="80%" alt="Adding a New Forest">
+<img src="Images/Step 2/02-new-forest.png.png" width="80%" alt="Adding a New Forest">
 <br>
 *Launching the promotion wizard and selecting "Add a new forest" to create a brand new domain environment.*
 
-<img src="images/step-2/03-domain-login-1.png" width="80%" alt="Domain Login Prompt">
+<img src="Images/Step 2/03-domain-login-1.png.png" width="80%" alt="Domain Login Prompt">
 <br>
 *After the automatic reboot, attempting to log back into the server.*
 
-<img src="images/step-2/04-domain-login-2.png" width="80%" alt="Domain Login Credentials">
+<img src="Images/Step 2/04-domain-login-2.png.png" width="80%" alt="Domain Login Credentials">
 <br>
 *Logging in using the domain administrator format (mydomain\userlab) to confirm the domain is active.*
 
@@ -157,23 +157,23 @@ The implementation includes provisioning Azure VMs, promoting a Windows Server t
 
 **Procedure:**
 
-<img src="images/step-3/01-create-ous.png" width="80%" alt="Creating OUs">
+<img src="Images/Step 3/01-create-ous.png.png" width="80%" alt="Creating OUs">
 <br>
 *Opening Active Directory Users and Computers (ADUC) and creating the _EMPLOYEES and _ADMINS Organizational Units.*
 
-<img src="images/step-3/02-create-jane-doe.png" width="80%" alt="Creating Jane Doe">
+<img src="Images/Step 3/02-create-jane-doe.png.png" width="80%" alt="Creating Jane Doe">
 <br>
 *Creating a new user, Jane Doe, inside the _ADMINS OU.*
 
-<img src="images/step-3/03-jane-domain-admins.png" width="80%" alt="Adding Jane to Domain Admins">
+<img src="Images/Step 3/03-jane-domain-admins.png.png" width="80%" alt="Adding Jane to Domain Admins">
 <br>
 *Adding Jane Doe to the Domain Admins security group to grant her full administrative privileges.*
 
-<img src="images/step-3/04-jane-admin-login.png" width="80%" alt="Logging in as Jane Admin">
+<img src="Images/Step 3/04-jane-admin-login.png.png" width="80%" alt="Logging in as Jane Admin">
 <br>
 *Logging out and logging back in using the new dedicated admin account (mydomain\jane_admin).*
 
-<img src="images/step-3/05-clients-ou.png" width="80%" alt="Clients OU">
+<img src="Images/Step 3/05-clients-ou.png.png" width="80%" alt="Clients OU">
 <br>
 *Creating a _CLIENTS OU and moving the Client-1 computer object into it for better organization.*
 
@@ -191,11 +191,11 @@ The implementation includes provisioning Azure VMs, promoting a Windows Server t
 <br>
 *Opening PowerShell ISE as an administrator and writing a script to generate random users.*
 
-<img src="images/step-4/02-powershell-running.png" width="80%" alt="Running the Script">
+<img src="Images/Step 4/02-powershell-running.png.png" width="80%" alt="Running the Script">
 <br>
 *Executing the script and watching the console output as the accounts are created in real time.*
 
-<img src="images/step-4/03-users-in-aduc.png" width="80%" alt="Users in ADUC">
+<img src="Images/Step 4/03-users-in-aduc.png.png" width="80%" alt="Users in ADUC">
 <br>
 *Opening ADUC to verify that the _EMPLOYEES OU is now populated with the newly generated accounts.*
 
@@ -209,27 +209,27 @@ The implementation includes provisioning Azure VMs, promoting a Windows Server t
 
 **Procedure:**
 
-<img src="images/step-5/01-rdp-domain-users.png" width="80%" alt="Adding Domain Users to RDP">
+<img src="Images/Step 5/01-rdp-domain-users.png.png" width="80%" alt="Adding Domain Users to RDP">
 <br>
 *Logging into Client-1 as jane_admin and adding the "Domain Users" group to the Remote Desktop Users list.*
 
-<img src="images/step-5/02-login-client1-jane.png" width="80%" alt="Logging in as Jane Admin">
+<img src="Images/Step 5/02-login-client1-jane.png.png" width="80%" alt="Logging in as Jane Admin">
 <br>
 *Verifying administrative access to Client-1.*
 
-<img src="images/step-5/03-login-babe-tow.png" width="80%" alt="Logging in as Babe Tow">
+<img src="Images/Step 5/03-login-babe-tow.png.png" width="80%" alt="Logging in as Babe Tow">
 <br>
 *Attempting to log in with a newly generated standard user (babe.tow) to test the new permissions.*
 
-<img src="images/step-5/04-login-babe-tow-retry.png" width="80%" alt="Babe Tow Login Retry">
+<img src="Images/Step 5/04-login-babe-tow-retry.png.png" width="80%" alt="Babe Tow Login Retry">
 <br>
 *Entering the standard user's credentials at the Windows Security prompt.*
 
-<img src="images/step-5/05-rdp-cert-warning.png" width="80%" alt="RDP Certificate Warning">
+<img src="Images/Step 5/05-rdp-cert-warning.png.png" width="80%" alt="RDP Certificate Warning">
 <br>
 *Bypassing the standard self signed certificate warning to complete the remote connection.*
 
-<img src="images/step-5/06-babe-tow-success-whoami.png" width="80%" alt="Successful Login and whoami">
+<img src="Images/Step 5/06-babe-tow-success-whoami.png.png" width="80%" alt="Successful Login and whoami">
 <br>
 *Successfully logged in. Using the whoami command to prove the active session is indeed the standard user.*
 
@@ -243,27 +243,27 @@ The implementation includes provisioning Azure VMs, promoting a Windows Server t
 
 **Procedure:**
 
-<img src="images/step-6/01-lockout-policy.png" width="80%" alt="Configuring Lockout Policy">
+<img src="Images/Step 6/01-lockout-policy.png.png" width="80%" alt="Configuring Lockout Policy">
 <br>
 *Opening Group Policy Management and configuring the Account Lockout Policy to trigger after 5 invalid attempts.*
 
-<img src="images/step-6/02-failed-login-attempt.png" width="80%" alt="Failed Login Attempt">
+<img src="Images/Step 6/02-failed-login-attempt.png.png" width="80%" alt="Failed Login Attempt">
 <br>
 *Going to Client-1 and intentionally entering a bad password multiple times to trigger the policy.*
 
-<img src="images/step-6/03-account-locked-error.png" width="80%" alt="Account Locked Error">
+<img src="Images/Step 6/03-account-locked-error.png.png" width="80%" alt="Account Locked Error">
 <br>
 *Receiving the lockout error message, confirming the Group Policy is working.*
 
-<img src="images/step-6/04-unlock-account.png" width="80%" alt="Unlocking the Account">
+<img src="Images/Step 6/04-unlock-account.png.png" width="80%" alt="Unlocking the Account">
 <br>
 *Returning to DC-1 and checking the "Unlock account" box in ADUC to resolve the Help Desk ticket.*
 
-<img src="images/step-6/05-reset-password-menu.png" width="80%" alt="Reset Password Menu">
+<img src="Images/Step 6/05-reset-password-menu.png.png" width="80%" alt="Reset Password Menu">
 <br>
 *Right clicking the user to access the Reset Password tool.*
 
-<img src="images/step-6/06-reset-password-dialog.png" width="80%" alt="Reset Password Dialog">
+<img src="Images/Step 6/06-reset-password-dialog.png.png" width="80%" alt="Reset Password Dialog">
 <br>
 *Setting a new temporary password for the user.*
 
@@ -277,39 +277,39 @@ The implementation includes provisioning Azure VMs, promoting a Windows Server t
 
 **Procedure:**
 
-<img src="images/step-7/01-disable-account.png" width="80%" alt="Disabling Account">
+<img src="Images/Step 7/01-disable-account.png.png" width="80%" alt="Disabling Account">
 <br>
 *Right clicking the user in ADUC and selecting "Disable Account" to simulate a terminated employee.*
 
-<img src="images/step-7/02-disabled-login-error.png" width="80%" alt="Disabled Login Error">
+<img src="Images/Step 7/02-disabled-login-error.png.png" width="80%" alt="Disabled Login Error">
 <br>
 *Attempting to log into Client-1 and receiving the specific "Account is currently disabled" error.*
 
-<img src="images/step-7/03-enable-account.png" width="80%" alt="Enabling Account">
+<img src="Images/Step 7/03-enable-account.png.png" width="80%" alt="Enabling Account">
 <br>
 *Right clicking the user again and selecting "Enable Account" to restore their access.*
 
-<img src="images/step-7/04-account-enabled.png" width="80%" alt="Account Enabled">
+<img src="Images/Step 7/04-account-enabled.png.png" width="80%" alt="Account Enabled">
 <br>
 *Confirming the account has been successfully re enabled.*
 
-<img src="images/step-7/05-reenabled-login-success.png" width="80%" alt="Re-enabled Login Success">
+<img src="Images/Step 7/05-reenabled-login-success.png.png" width="80%" alt="Re-enabled Login Success">
 <br>
 *Verifying that the user can successfully log back into Client-1.*
 
-<img src="images/step-7/06-uac-privilege-escalation.png" width="80%" alt="UAC Prompt">
+<img src="Images/Step 7/06-uac-privilege-escalation.png.png" width="80%" alt="UAC Prompt">
 <br>
 *Demonstrating least privilege. A standard user needs to provide admin credentials (jane_admin) to authorize a system change.*
 
-<img src="images/step-7/07-event-4625-lockout.png" width="80%" alt="Event 4625 Lockout">
+<img src="Images/Step 7/07-event-4625-lockout.png.png" width="80%" alt="Event 4625 Lockout">
 <br>
 *Opening Event Viewer on Client-1 and finding Event ID 4625, which explicitly logs the Account Lockout.*
 
-<img src="images/step-7/08-event-4625-bad-password.png" width="80%" alt="Event 4625 Bad Password">
+<img src="Images/Step 7/08-event-4625-bad-password.png.png" width="80%" alt="Event 4625 Bad Password">
 <br>
 *Reviewing the details of the event log to see the failure reason was a bad password.*
 
-<img src="images/step-7/09-event-log-sequence.png" width="80%" alt="Event Log Sequence">
+<img src="Images/Step 7/09-event-log-sequence.png.png" width="80%" alt="Event Log Sequence">
 <br>
 *Observing the chronological sequence of failed logon events that led to the final account lockout.*
 
