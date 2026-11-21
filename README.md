@@ -64,39 +64,62 @@ The implementation includes provisioning Azure VMs, promoting a Windows Server t
 **Goal:** Create the Domain Controller (DC) and Client VMs in Azure, ensuring they are on the same network so they can communicate.
 
 **Procedure:**
-1. Created a new Resource Group (`Active-Directory-Lab`) and a Virtual Network (`Active-Directory-VNet`).
-2. Configured the Domain Controller VM (DC-1) using Windows Server. I allowed inbound RDP traffic so I could connect to it remotely.
-3. Configured the Client VM (Client-1) in the same VNet so it could communicate with the Domain Controller.
-4. Set DC-1's Private IP address assignment to Static (`10.0.0.4`).
-5. Set Client-1's DNS Servers to Custom, pointing to DC-1's IP, and verified connectivity with a ping test.
 
 <img src="images/step-1/01-create-rg.png" width="80%" alt="Creating Resource Group">
 <br>
+*Creating a new Resource Group named Active-Directory-Lab to hold all the resources for this project.*
+
 <img src="images/step-1/02-create-vnet.png" width="80%" alt="Creating Virtual Network">
 <br>
+*Provisioning a Virtual Network (VNet) to allow the Domain Controller and Client machines to communicate with each other securely.*
+
 <img src="images/step-1/03-dc1-basics.png" width="80%" alt="DC-1 Basics Tab">
 <br>
+*Configuring the Basics tab for the Domain Controller VM (DC-1) using Windows Server.*
+
 <img src="images/step-1/04-dc1-size-admin.png" width="80%" alt="DC-1 Size and Admin">
 <br>
+*Selecting the VM size and setting the administrator credentials. I also allowed inbound RDP traffic so I could connect to it remotely.*
+
 <img src="images/step-1/05-dc1-networking.png" width="80%" alt="DC-1 Networking">
 <br>
+*Placing DC-1 into the Virtual Network and assigning it a public IP for RDP access.*
+
 <img src="images/step-1/06-client1-basics.png" width="80%" alt="Client-1 Basics Tab">
 <br>
+*Configuring the Basics tab for the Client VM (Client-1).*
+
 <img src="images/step-1/07-client1-size-admin.png" width="80%" alt="Client-1 Size and Admin">
 <br>
+*Setting up the administrator credentials and network rules for Client-1.*
+
 <img src="images/step-1/08-client1-networking.png" width="80%" alt="Client-1 Networking">
 <br>
+*Placing Client-1 in the same VNet as the Domain Controller so they can communicate.*
+
 <img src="images/step-1/09-vms-deployed.png" width="80%" alt="Both VMs Running">
 <br>
+*Confirming both VMs (DC-1 and Client-1) are successfully deployed and in a Running state.*
+
 <img src="images/step-1/10-dc1-static-ip.png" width="80%" alt="DC-1 Static IP Configuration">
 <br>
+*Changing DC-1's private IP assignment to Static (10.0.0.4). A Domain Controller must have a static IP for DNS to function properly.*
+
 <img src="images/step-1/11-client1-custom-dns.png" width="80%" alt="Client-1 Custom DNS">
 <br>
+*Changing Client-1's DNS settings from "Inherit" to "Custom" and pointing it directly to DC-1's IP address.*
+
 <img src="images/step-1/12-client1-ping-test.png" width="80%" alt="Pinging DC-1">
 <br>
+*Verifying network connectivity by pinging DC-1's private IP address from Client-1.*
+
 <img src="images/step-1/13-client1-ipconfig.png" width="80%" alt="Client-1 ipconfig">
 <br>
+*Running ipconfig /all on Client-1 to confirm the DNS server is successfully pointing to DC-1.*
+
 <img src="images/step-1/14-dc1-ipconfig.png" width="80%" alt="DC-1 ipconfig">
+<br>
+*Running ipconfig /all on DC-1 to confirm its static IP and self referencing DNS settings.*
 
 **Result:** Both VMs are deployed and networked correctly, ready for AD DS installation.
 
@@ -104,22 +127,25 @@ The implementation includes provisioning Azure VMs, promoting a Windows Server t
 
 ### Step 2: Install Active Directory Domain Services (AD DS)
 
-**Goal:** Install the AD DS role on the Windows Server VM and promote it to a Domain Controller creating a new forest (`mydomain.com`).
+**Goal:** Install the AD DS role on the Windows Server VM and promote it to a Domain Controller creating a new forest.
 
 **Procedure:**
-1. Logged into DC-1 via RDP and opened Server Manager.
-2. Installed the Active Directory Domain Services role.
-3. Once the installation succeeded, I launched the configuration wizard to promote the server.
-4. Selected "Add a new forest" and defined the root domain name.
-5. Logged back in using the domain administrator format confirming the domain was active.
 
 <img src="images/step-2/01-adds-install-success.png" width="80%" alt="AD DS Installation Success">
 <br>
+*Successfully installing the Active Directory Domain Services role via Server Manager.*
+
 <img src="images/step-2/02-new-forest.png" width="80%" alt="Adding a New Forest">
 <br>
+*Launching the promotion wizard and selecting "Add a new forest" to create a brand new domain environment.*
+
 <img src="images/step-2/03-domain-login-1.png" width="80%" alt="Domain Login Prompt">
 <br>
+*After the automatic reboot, attempting to log back into the server.*
+
 <img src="images/step-2/04-domain-login-2.png" width="80%" alt="Domain Login Credentials">
+<br>
+*Logging in using the domain administrator format (mydomain\userlab) to confirm the domain is active.*
 
 **Result:** The AD DS role is installed, and the server is now a Domain Controller for the new forest.
 
@@ -127,25 +153,29 @@ The implementation includes provisioning Azure VMs, promoting a Windows Server t
 
 ### Step 3: Configure Organizational Units (OUs) and Admin User
 
-**Goal:** Create a structured directory (OUs) and a dedicated Domain Admin account (`jane_admin`).
+**Goal:** Create a structured directory (OUs) and a dedicated Domain Admin account.
 
 **Procedure:**
-1. Opened Active Directory Users and Computers (ADUC).
-2. Created two Organizational Units: `_EMPLOYEES` and `_ADMINS` to keep the directory organized.
-3. Created a new user (Jane Doe) inside the `_ADMINS` OU.
-4. Added her to the Domain Admins security group.
-5. Created a `_CLIENTS` OU and moved the Client-1 computer object into it.
-6. Logged out and logged back in using the new admin account.
 
 <img src="images/step-3/01-create-ous.png" width="80%" alt="Creating OUs">
 <br>
+*Opening Active Directory Users and Computers (ADUC) and creating the _EMPLOYEES and _ADMINS Organizational Units.*
+
 <img src="images/step-3/02-create-jane-doe.png" width="80%" alt="Creating Jane Doe">
 <br>
+*Creating a new user, Jane Doe, inside the _ADMINS OU.*
+
 <img src="images/step-3/03-jane-domain-admins.png" width="80%" alt="Adding Jane to Domain Admins">
 <br>
+*Adding Jane Doe to the Domain Admins security group to grant her full administrative privileges.*
+
 <img src="images/step-3/04-jane-admin-login.png" width="80%" alt="Logging in as Jane Admin">
 <br>
+*Logging out and logging back in using the new dedicated admin account (mydomain\jane_admin).*
+
 <img src="images/step-3/05-clients-ou.png" width="80%" alt="Clients OU">
+<br>
+*Creating a _CLIENTS OU and moving the Client-1 computer object into it for better organization.*
 
 **Result:** The directory structure is organized, and a dedicated admin account exists.
 
@@ -156,16 +186,18 @@ The implementation includes provisioning Azure VMs, promoting a Windows Server t
 **Goal:** Automate user creation to simulate real world onboarding and save time.
 
 **Procedure:**
-1. Opened PowerShell ISE on DC-1 as an administrator.
-2. Wrote a script to generate random names and create users in the `_EMPLOYEES` OU.
-3. Ran the script and watched the console output as the accounts were created.
-4. Opened ADUC and confirmed that the `_EMPLOYEES` OU was populated.
 
 <img src="images/step-4/01-powershell-script.png" width="80%" alt="PowerShell Script">
 <br>
+*Opening PowerShell ISE as an administrator and writing a script to generate random users.*
+
 <img src="images/step-4/02-powershell-running.png" width="80%" alt="Running the Script">
 <br>
+*Executing the script and watching the console output as the accounts are created in real time.*
+
 <img src="images/step-4/03-users-in-aduc.png" width="80%" alt="Users in ADUC">
+<br>
+*Opening ADUC to verify that the _EMPLOYEES OU is now populated with the newly generated accounts.*
 
 **Result:** Multiple users were provisioned efficiently using automation, demonstrating an understanding of script based identity management.
 
@@ -176,23 +208,30 @@ The implementation includes provisioning Azure VMs, promoting a Windows Server t
 **Goal:** Allow standard domain users to log into Client-1 via RDP and verify the login works.
 
 **Procedure:**
-1. Logged into Client-1 as `jane_admin`.
-2. Opened System Properties and added the Domain Users group to the Remote Desktop Users list.
-3. Logged out and attempted to log in with a newly generated standard user (`babe.tow`).
-4. Bypassed the standard self signed certificate warning.
-5. Used the `whoami` command to prove the active session was indeed the standard user.
 
 <img src="images/step-5/01-rdp-domain-users.png" width="80%" alt="Adding Domain Users to RDP">
 <br>
+*Logging into Client-1 as jane_admin and adding the "Domain Users" group to the Remote Desktop Users list.*
+
 <img src="images/step-5/02-login-client1-jane.png" width="80%" alt="Logging in as Jane Admin">
 <br>
+*Verifying administrative access to Client-1.*
+
 <img src="images/step-5/03-login-babe-tow.png" width="80%" alt="Logging in as Babe Tow">
 <br>
+*Attempting to log in with a newly generated standard user (babe.tow) to test the new permissions.*
+
 <img src="images/step-5/04-login-babe-tow-retry.png" width="80%" alt="Babe Tow Login Retry">
 <br>
+*Entering the standard user's credentials at the Windows Security prompt.*
+
 <img src="images/step-5/05-rdp-cert-warning.png" width="80%" alt="RDP Certificate Warning">
 <br>
+*Bypassing the standard self signed certificate warning to complete the remote connection.*
+
 <img src="images/step-5/06-babe-tow-success-whoami.png" width="80%" alt="Successful Login and whoami">
+<br>
+*Successfully logged in. Using the whoami command to prove the active session is indeed the standard user.*
 
 **Result:** Non administrative domain users can now access the client machine remotely.
 
@@ -203,23 +242,30 @@ The implementation includes provisioning Azure VMs, promoting a Windows Server t
 **Goal:** Implement a Group Policy to lock accounts after 5 failed login attempts then test it.
 
 **Procedure:**
-1. Opened Group Policy Management on DC-1 and edited the Default Domain Policy.
-2. Configured the Account Lockout Policy to lock accounts after 5 invalid attempts for 30 minutes.
-3. Went to Client-1 and intentionally entered a bad password for `babe.tow` until the system triggered the lockout error.
-4. Went back to DC-1 and checked the "Unlock account" box in ADUC.
-5. Performed a password reset for the user.
 
 <img src="images/step-6/01-lockout-policy.png" width="80%" alt="Configuring Lockout Policy">
 <br>
+*Opening Group Policy Management and configuring the Account Lockout Policy to trigger after 5 invalid attempts.*
+
 <img src="images/step-6/02-failed-login-attempt.png" width="80%" alt="Failed Login Attempt">
 <br>
+*Going to Client-1 and intentionally entering a bad password multiple times to trigger the policy.*
+
 <img src="images/step-6/03-account-locked-error.png" width="80%" alt="Account Locked Error">
 <br>
+*Receiving the lockout error message, confirming the Group Policy is working.*
+
 <img src="images/step-6/04-unlock-account.png" width="80%" alt="Unlocking the Account">
 <br>
+*Returning to DC-1 and checking the "Unlock account" box in ADUC to resolve the Help Desk ticket.*
+
 <img src="images/step-6/05-reset-password-menu.png" width="80%" alt="Reset Password Menu">
 <br>
+*Right clicking the user to access the Reset Password tool.*
+
 <img src="images/step-6/06-reset-password-dialog.png" width="80%" alt="Reset Password Dialog">
+<br>
+*Setting a new temporary password for the user.*
 
 **Result:** Successfully enforced a security policy and performed routine Help Desk administration.
 
@@ -230,29 +276,42 @@ The implementation includes provisioning Azure VMs, promoting a Windows Server t
 **Goal:** Disable an account, test the login, re enable it, and review the security logs to prove the actions were recorded.
 
 **Procedure:**
-1. Disabled the `babe.tow` account in ADUC.
-2. Attempted to log into Client-1 (resulting in a specific error message).
-3. Re enabled the account and verified that login was restored.
-4. Captured a UAC prompt showing a standard user needing to provide admin credentials to authorize a system change.
-5. Opened Event Viewer on Client-1 and reviewed the Security logs for Event ID 4625.
 
 <img src="images/step-7/01-disable-account.png" width="80%" alt="Disabling Account">
 <br>
+*Right clicking the user in ADUC and selecting "Disable Account" to simulate a terminated employee.*
+
 <img src="images/step-7/02-disabled-login-error.png" width="80%" alt="Disabled Login Error">
 <br>
+*Attempting to log into Client-1 and receiving the specific "Account is currently disabled" error.*
+
 <img src="images/step-7/03-enable-account.png" width="80%" alt="Enabling Account">
 <br>
+*Right clicking the user again and selecting "Enable Account" to restore their access.*
+
 <img src="images/step-7/04-account-enabled.png" width="80%" alt="Account Enabled">
 <br>
+*Confirming the account has been successfully re enabled.*
+
 <img src="images/step-7/05-reenabled-login-success.png" width="80%" alt="Re-enabled Login Success">
 <br>
+*Verifying that the user can successfully log back into Client-1.*
+
 <img src="images/step-7/06-uac-privilege-escalation.png" width="80%" alt="UAC Prompt">
 <br>
+*Demonstrating least privilege. A standard user needs to provide admin credentials (jane_admin) to authorize a system change.*
+
 <img src="images/step-7/07-event-4625-lockout.png" width="80%" alt="Event 4625 Lockout">
 <br>
+*Opening Event Viewer on Client-1 and finding Event ID 4625, which explicitly logs the Account Lockout.*
+
 <img src="images/step-7/08-event-4625-bad-password.png" width="80%" alt="Event 4625 Bad Password">
 <br>
+*Reviewing the details of the event log to see the failure reason was a bad password.*
+
 <img src="images/step-7/09-event-log-sequence.png" width="80%" alt="Event Log Sequence">
+<br>
+*Observing the chronological sequence of failed logon events that led to the final account lockout.*
 
 **Result:** Successfully demonstrated the ability to audit and troubleshoot security events at the system level.
 
