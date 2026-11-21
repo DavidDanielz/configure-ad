@@ -57,7 +57,7 @@ The implementation includes provisioning Azure VMs, promoting a Windows Server t
 
 ---
 
-## 🛠️ Deployment & Configuration
+## 🛠️ Hands-On Deployment: From Azure Setup to Active Directory
 
 ### 1️⃣ Step 1: Provision Azure Virtual Machines
 
