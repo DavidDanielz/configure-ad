@@ -71,11 +71,15 @@ The implementation includes provisioning Azure VMs, promoting a Windows Server t
 **Outcome of the image:**
 *Creating a new Resource Group named Active-Directory-Lab to hold all the resources for this project.*
 
+---
+
 <img src="Images/Step 1/02-create-vnet.png.png" width="80%" alt="Creating Virtual Network">
 <br>
 
 **Outcome of the image:**
 *Provisioning a Virtual Network (VNet) to allow the Domain Controller and Client machines to communicate with each other securely.*
+
+---
 
 <img src="Images/Step 1/03-dc1-basics.png.png" width="80%" alt="DC-1 Basics Tab">
 <br>
@@ -83,11 +87,15 @@ The implementation includes provisioning Azure VMs, promoting a Windows Server t
 **Outcome of the image:**
 *Configuring the Basics tab for the Domain Controller VM (DC-1) using Windows Server.*
 
+---
+
 <img src="Images/Step 1/04-dc1-size-admin.png.png" width="80%" alt="DC-1 Size and Admin">
 <br>
 
 **Outcome of the image:**
 *Selecting the VM size and setting the administrator credentials. I also allowed inbound RDP traffic so I could connect to it remotely.*
+
+---
 
 <img src="Images/Step 1/05-dc1-networking.png.png" width="80%" alt="DC-1 Networking">
 <br>
@@ -95,11 +103,15 @@ The implementation includes provisioning Azure VMs, promoting a Windows Server t
 **Outcome of the image:**
 *Placing DC-1 into the Virtual Network and assigning it a public IP for RDP access.*
 
+---
+
 <img src="Images/Step 1/06-client1-basics.png.png" width="80%" alt="Client-1 Basics Tab">
 <br>
 
 **Outcome of the image:**
 *Configuring the Basics tab for the Client VM (Client-1).*
+
+---
 
 <img src="Images/Step 1/07-client1-size-admin.png.png" width="80%" alt="Client-1 Size and Admin">
 <br>
@@ -107,6 +119,7 @@ The implementation includes provisioning Azure VMs, promoting a Windows Server t
 **Outcome of the image:**
 *Setting up the administrator credentials and network rules for Client-1.*
 
+---
 
 <img src="Images/Step 1/08-client1-networking.png.png" width="80%" alt="Client-1 Networking">
 <br>
