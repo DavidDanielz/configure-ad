@@ -69,53 +69,66 @@ The implementation includes provisioning Azure VMs, promoting a Windows Server t
 <br>
 *Creating a new Resource Group named Active-Directory-Lab to hold all the resources for this project.*
 
+
 <img src="Images/Step 1/02-create-vnet.png.png" width="80%" alt="Creating Virtual Network">
 <br>
 *Provisioning a Virtual Network (VNet) to allow the Domain Controller and Client machines to communicate with each other securely.*
+
 
 <img src="Images/Step 1/03-dc1-basics.png.png" width="80%" alt="DC-1 Basics Tab">
 <br>
 *Configuring the Basics tab for the Domain Controller VM (DC-1) using Windows Server.*
 
+
 <img src="Images/Step 1/04-dc1-size-admin.png.png" width="80%" alt="DC-1 Size and Admin">
 <br>
 *Selecting the VM size and setting the administrator credentials. I also allowed inbound RDP traffic so I could connect to it remotely.*
+
 
 <img src="Images/Step 1/05-dc1-networking.png.png" width="80%" alt="DC-1 Networking">
 <br>
 *Placing DC-1 into the Virtual Network and assigning it a public IP for RDP access.*
 
+
 <img src="Images/Step 1/06-client1-basics.png.png" width="80%" alt="Client-1 Basics Tab">
 <br>
 *Configuring the Basics tab for the Client VM (Client-1).*
+
 
 <img src="Images/Step 1/07-client1-size-admin.png.png" width="80%" alt="Client-1 Size and Admin">
 <br>
 *Setting up the administrator credentials and network rules for Client-1.*
 
+
 <img src="Images/Step 1/08-client1-networking.png.png" width="80%" alt="Client-1 Networking">
 <br>
 *Placing Client-1 in the same VNet as the Domain Controller so they can communicate.*
+
 
 <img src="Images/Step 1/09-vms-deployed.png.png" width="80%" alt="Both VMs Running">
 <br>
 *Confirming both VMs (DC-1 and Client-1) are successfully deployed and in a Running state.*
 
+
 <img src="Images/Step 1/10-dc1-static-ip.png.png" width="80%" alt="DC-1 Static IP Configuration">
 <br>
 *Changing DC-1's private IP assignment to Static (10.0.0.4). A Domain Controller must have a static IP for DNS to function properly.*
+
 
 <img src="Images/Step 1/11-client1-custom-dns.png.png" width="80%" alt="Client-1 Custom DNS">
 <br>
 *Changing Client-1's DNS settings from "Inherit" to "Custom" and pointing it directly to DC-1's IP address.*
 
+
 <img src="Images/Step 1/12-client1-ping-test.png.png" width="80%" alt="Pinging DC-1">
 <br>
 *Verifying network connectivity by pinging DC-1's private IP address from Client-1.*
 
+
 <img src="Images/Step 1/13-client1-ipconfig.png.png" width="80%" alt="Client-1 ipconfig">
 <br>
 *Running ipconfig /all on Client-1 to confirm the DNS server is successfully pointing to DC-1.*
+
 
 <img src="Images/Step 1/14-dc1-ipconfig.png.png" width="80%" alt="DC-1 ipconfig">
 <br>
