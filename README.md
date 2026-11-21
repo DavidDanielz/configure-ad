@@ -187,7 +187,7 @@ The implementation includes provisioning Azure VMs, promoting a Windows Server t
 
 **Procedure:**
 
-<img src="images/step-4/01-powershell-script.png" width="80%" alt="PowerShell Script">
+<img src="Images/Step 4/01-powershell-script.png.png" width="80%" alt="PowerShell Script">
 <br>
 *Opening PowerShell ISE as an administrator and writing a script to generate random users.*
 
