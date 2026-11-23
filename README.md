@@ -32,6 +32,22 @@ The implementation includes provisioning Azure VMs, promoting a Windows Server t
 
 ---
 
+## ⏱️ At a Glance
+
+If you are short on time, here is what this project proves and where to find it.
+
+| What this project proves | Where to look |
+| :--- | :--- |
+| I can provision and network Azure VMs (VNet, static IP, DNS). | Step 1 |
+| I can install and promote a Windows Server to a Domain Controller. | Step 2 |
+| I can create Organizational Units and a dedicated Domain Admin account. | Step 3 |
+| I can automate bulk user creation with PowerShell. | Step 4 |
+| I can configure Remote Desktop access for standard domain users. | Step 5 |
+| I can enforce Group Policy (account lockout) and perform Help Desk tasks (unlock, reset password). | Step 6 |
+| I can disable and re-enable accounts, and audit security events with Event Viewer. | Step 7 |
+
+---
+
 ## 🖥️ Environments & Technologies Used
 
 - Microsoft Azure (Virtual Machines & Networking)
