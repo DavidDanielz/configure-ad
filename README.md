@@ -479,7 +479,7 @@ I re enabled the account and verified that login was restored. I also captured a
 
 ---
 
-Finally, I opened Event Viewer on Client-1 and reviewed the Security logs. I found Event ID 4625, which explicitly showed the account lockout and the bad password attempts.
+Finally, I opened Event Viewer on Client-1 and reviewed the Security logs. Event ID 4625 recorded each failed logon with a bad password attempts. On DC-1, Event ID 4740 confirmed the account was locked out.
 
 <img src="Images/Step 7/07-event-4625-lockout.png.png" width="100%" alt="Event 4625 Lockout">
 <br>
